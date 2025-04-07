@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "902695089527",
+    "firebase_url": "https://minimal-text-dbe9d-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "minimal-text-dbe9d",
+    "storage_bucket": "minimal-text-dbe9d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902695089527:android:16d51bf008ffbe492cdd72",
+        "android_client_info": {
+          "package_name": "com.minimalcode.minimaltext"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATJNng7ZqnEZ90nAK2bOUl94ZPON-HmA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
