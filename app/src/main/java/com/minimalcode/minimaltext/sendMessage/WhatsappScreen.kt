@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -142,7 +143,7 @@ fun WhatsAppScreen(geminiViewModel: GeminiViewModel = viewModel()) {
             onValueChange = { message = it },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(120.dp),
+                .defaultMinSize(120.dp),
             label = { Text("Message") },
             placeholder = {
                 if (geminiState is GeminiUiState.Loading) {
