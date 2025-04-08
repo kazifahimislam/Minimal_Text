@@ -108,7 +108,7 @@ fun AmbientWhatsAppUI() {
                     modifier = Modifier.weight(1f),
                     contentAlignment = Alignment.Center
                 ) {
-                    WhatsAppScreen() // Your main content
+                    WhatsAppScreen()
                 }
             }
         }
