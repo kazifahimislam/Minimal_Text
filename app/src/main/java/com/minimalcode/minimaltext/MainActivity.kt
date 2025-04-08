@@ -8,6 +8,10 @@ import androidx.activity.enableEdgeToEdge
 
 import com.minimalcode.minimaltext.ui.theme.MinimalTextTheme
 import androidx.activity.ComponentActivity
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
 import com.example.learningcompose.update.ShowUpdateDialog
 import com.example.learningcompose.update.UpdateChecker
@@ -16,17 +20,22 @@ import com.minimalcode.minimaltext.sendMessage.AmbientWhatsAppUI
 
 
 class MainActivity : ComponentActivity() {
-    private var showDialog = false
-    private var apkUrl: String? = null
+    // Convert to state variables that can be observed by Compose
+    private val showDialogState = mutableStateOf(false)
+    private val apkUrlState = mutableStateOf<String?>(null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        checkForUpdates()
 
         setContent {
             MinimalTextTheme {
 
-                AmbientWhatsAppUI()
+                // Use remember to create a stable reference to the state
+                var showDialog by remember { showDialogState }
+                var apkUrl by remember { apkUrlState }
+
 
                 // Show the update dialog if needed
                 if (showDialog && apkUrl != null) {
@@ -35,9 +44,13 @@ class MainActivity : ComponentActivity() {
                         onUpdate = { apkUrl?.let { downloadAndInstallApk(it) } }
                     )
                 }
+
+                AmbientWhatsAppUI()
+
+
             }
         }
-        checkForUpdates()
+
     }
 
     // Check for updates and show the dialog if an update is available
@@ -45,8 +58,9 @@ class MainActivity : ComponentActivity() {
         val context = this
 
         UpdateChecker.checkForUpdates(context) { url ->
-            apkUrl = url
-            showDialog = true
+            // Update the state variables to trigger recomposition
+            apkUrlState.value = url
+            showDialogState.value = true
         }
     }
 
