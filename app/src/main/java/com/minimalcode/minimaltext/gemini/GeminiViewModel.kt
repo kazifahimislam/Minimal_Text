@@ -28,7 +28,12 @@ class GeminiViewModel : ViewModel() {
 
                 // Create content for the API request using the updated syntax
                 val content = content {
-                    text(userMessage) // Simplified way to add text content
+                    text("I am using gemini API for text generation in my application I want that you take users propmt and genrate response straight forwad" +
+                            "for example the user might say generate a formal response for my client that the work has been done" +
+                            "and you will only response the text that will be directly used by the user and answer will be like " +
+                            "I have completed your work properly like this do not response any extra things and also do not use anything like alright I am " +
+                            "generating a response for you , just generate the answer that user is waiting for " +"users message:"+userMessage) // Simplified way to add text content
+
                 }
 
                 // Make the API call to Gemini
