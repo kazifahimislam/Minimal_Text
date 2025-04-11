@@ -52,7 +52,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 
@@ -62,9 +65,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
@@ -73,6 +78,7 @@ import com.minimalcode.minimaltext.gemini.GeminiUiState
 import com.minimalcode.minimaltext.gemini.GeminiViewModel
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewmodel.compose.viewModel
+@Preview(showBackground = true,showSystemUi = true)
 @Composable
 fun WhatsAppScreen(geminiViewModel: GeminiViewModel = viewModel()) {
     val context = LocalContext.current
@@ -107,7 +113,7 @@ fun WhatsAppScreen(geminiViewModel: GeminiViewModel = viewModel()) {
             text = "Send WhatsApp Message",
             style = MaterialTheme.typography.headlineSmall,
             modifier = Modifier.padding(bottom = 8.dp),
-            color = MaterialTheme.colorScheme.primary
+            color =MaterialTheme.colorScheme.primary
         )
 
         // Row for country code and phone number
@@ -118,8 +124,19 @@ fun WhatsAppScreen(geminiViewModel: GeminiViewModel = viewModel()) {
             OutlinedTextField(
                 value = countryCode,
                 onValueChange = { countryCode = it },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedTextColor = MaterialTheme.colorScheme.secondary,
+                    focusedBorderColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+                    focusedLabelColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.secondary,
+
+                ),
+                label = { Text("Country Code", color = MaterialTheme.colorScheme.secondary) },
+
                 modifier = Modifier
-                    .width(80.dp).padding(top = 8.dp), // Fixed width for country code
+                    .width(80.dp),
 
                 singleLine = true,
                 shape = RoundedCornerShape(8.dp),
@@ -130,8 +147,18 @@ fun WhatsAppScreen(geminiViewModel: GeminiViewModel = viewModel()) {
                 onValueChange = { phoneNumber = it },
                 modifier = Modifier
                     .weight(1f), // Takes remaining width
-                label = { Text("Phone Number") },
-                placeholder = { Text("9876543210") },
+                
+                label = { Text("Phone Number", color = MaterialTheme.colorScheme.secondary) },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedTextColor = MaterialTheme.colorScheme.secondary,
+                    focusedBorderColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+                    focusedLabelColor = MaterialTheme.colorScheme.secondary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.secondary,
+
+                    ),
+                placeholder = { Text("9876543210",color = MaterialTheme.colorScheme.secondary) },
                 singleLine = true,
                 shape = RoundedCornerShape(8.dp),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number) // Numeric input
@@ -144,7 +171,16 @@ fun WhatsAppScreen(geminiViewModel: GeminiViewModel = viewModel()) {
             modifier = Modifier
                 .fillMaxWidth()
                 .defaultMinSize(120.dp),
-            label = { Text("Message") },
+            label = { Text("Message",color = MaterialTheme.colorScheme.secondary) },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedTextColor = MaterialTheme.colorScheme.secondary,
+                unfocusedTextColor = MaterialTheme.colorScheme.secondary,
+                focusedBorderColor = MaterialTheme.colorScheme.secondary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.secondary,
+                focusedLabelColor = MaterialTheme.colorScheme.secondary,
+                unfocusedLabelColor = MaterialTheme.colorScheme.secondary,
+
+                ),
             placeholder = {
                 if (geminiState is GeminiUiState.Loading) {
                     Text("Gemini is thinking...")
@@ -190,7 +226,7 @@ fun WhatsAppScreen(geminiViewModel: GeminiViewModel = viewModel()) {
             ) {
                 CircularProgressIndicator(modifier = Modifier.width(16.dp), strokeWidth = 2.dp)
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Gemini is generating a response...")
+                Text("Gemini is generating a response...",color = MaterialTheme.colorScheme.secondary)
             }
         }
 

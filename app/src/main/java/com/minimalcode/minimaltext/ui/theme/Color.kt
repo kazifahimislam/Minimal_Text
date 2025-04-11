@@ -3,6 +3,8 @@ package com.minimalcode.minimaltext.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
+val Blue = Color(0xFF00A2FF)
+val White = Color(0xFFFFFFFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)
 

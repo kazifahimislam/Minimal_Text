@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.core.view.WindowCompat
 
 import com.example.learningcompose.update.ShowUpdateDialog
 import com.example.learningcompose.update.UpdateChecker
@@ -26,11 +27,16 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         enableEdgeToEdge()
         checkForUpdates()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
             MinimalTextTheme {
+
+
 
                 // Use remember to create a stable reference to the state
                 var showDialog by remember { showDialogState }
