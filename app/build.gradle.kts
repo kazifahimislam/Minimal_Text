@@ -13,8 +13,8 @@ android {
         applicationId = "com.minimalcode.minimaltext"
         minSdk = 26
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.0.5"
+        versionCode = 6
+        versionName = "1.0.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,10 +41,10 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.accompanist.systemuicontroller)
     implementation (libs.generativeai)
     implementation (libs.androidx.lifecycle.viewmodel.compose)
-
+    implementation (libs.material3)
     implementation (libs.androidx.material.icons.extended)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
