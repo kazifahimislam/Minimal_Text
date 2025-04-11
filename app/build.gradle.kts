@@ -13,8 +13,8 @@ android {
         applicationId = "com.minimalcode.minimaltext"
         minSdk = 26
         targetSdk = 35
-        versionCode = 6
-        versionName = "1.0.6"
+        versionCode = 9
+        versionName = "1.0.9"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,6 +41,13 @@ android {
 }
 
 dependencies {
+
+    // For Activity Result API
+    implementation (libs.androidx.activity.compose.v1101)
+// For Compose UI
+    implementation (libs.ui)
+    implementation (libs.androidx.material3.v112)
+    implementation (libs.androidx.material.icons.extended)
     implementation(libs.accompanist.systemuicontroller)
     implementation (libs.generativeai)
     implementation (libs.androidx.lifecycle.viewmodel.compose)
@@ -55,6 +62,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.messaging)
+    implementation(libs.firebase.inappmessaging.display)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
