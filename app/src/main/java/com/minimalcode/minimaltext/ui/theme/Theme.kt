@@ -52,7 +52,8 @@ fun MinimalTextTheme(
         Log.d("ThemeCheck", "darkTheme = $darkTheme")
         systemUiController.setStatusBarColor(
             darkIcons = false,
-            color = Color.White
+            color = Color.Transparent,
+
 
 
         )
